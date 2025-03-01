@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { TileSelection } from "@/components/tile-selection"
 import { ColorEditor } from "@/components/svg-editor/color-editor"
-// import { ViewPanel } from "@/components/view-panel"
 import { parseSvgString } from "@/components/svg-editor/svg-parser"
 import type { SvgData } from "@/components/svg-editor/types"
 import EnvironmentSelector from "@/components/view-panel"
@@ -18,8 +17,7 @@ interface Tile {
 export default function Page() {
   const [selectedTile, setSelectedTile] = useState<Tile | null>(null)
   const [currentSvg, setCurrentSvg] = useState<SvgData | null>(null)
- 
-  
+
   const [selectedEnvironment, setSelectedEnvironment] = useState<string>("kitchen")
   const [showBorders, setShowBorders] = useState<boolean>(false)
   const [pathColors, setPathColors] = useState<Record<string, string>>({})
@@ -43,7 +41,7 @@ export default function Page() {
       <div className="flex-1 flex overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-3 w-full h-full">
           {/* Tile Selection Panel */}
-          <div className=" border-r border-gray-200 overflow-y-auto">
+          <div className="border-r border-gray-200 overflow-y-auto">
             <div className="p-4 border-b border-gray-200">
               <h2 className="text-lg font-bold text-center bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
                 TILE SELECTION
@@ -54,7 +52,7 @@ export default function Page() {
           </div>
 
           {/* Color Editor Panel */}
-          <div className=" order-r border-gray-200 overflow-y-auto">
+          <div className="border-r border-gray-200 overflow-y-auto">
             <div className="p-4 border-b border-gray-200">
               <h2 className="text-lg font-bold text-center bg-gradient-to-r from-blue-500 to-green-500 bg-clip-text text-transparent">
                 COLOR EDITOR
@@ -73,29 +71,17 @@ export default function Page() {
           </div>
 
           {/* View Panel */}
-          <div className=" overflow-y-auto">
+          <div className="overflow-y-auto">
             <div className="p-4 border-b border-gray-200">
               <h2 className="text-lg font-bold text-center bg-gradient-to-r from-green-500 to-yellow-500 bg-clip-text text-transparent">
                 VIEW
               </h2>
             </div>
-            {/* <ViewPanel
-              selectedTile={selectedTile}
-              currentSvg={currentSvg}
-              selectedEnvironment={selectedEnvironment}
-              setSelectedEnvironment={setSelectedEnvironment}
-              pathColors={pathColors}
-              showBorders={showBorders}
-            /> */}
-
-
-
-
-            <EnvironmentSelector currentSvg={currentSvg} />
+            <EnvironmentSelector currentSvg={currentSvg} pathColors={pathColors} showBorders={showBorders} />
           </div>
         </div>
       </div>
     </div>
-  ) 
+  )
 }
 
